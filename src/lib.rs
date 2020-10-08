@@ -26,6 +26,8 @@
 //  Declare the libraries that contain macros
 extern crate macros as mynewt_macros;   //  Declare the Mynewt Procedural Macros library
 
+pub use lvgl;                           //  Export LVGL API
+
 use core::{
     ptr,
 };
@@ -43,6 +45,7 @@ use lvgl::{
 ///////////////////////////////////////////////////////////////////////////////
 //  Watch Face Trait
 
+/// Watch Faces shall implement this trait
 pub trait WatchFace {
     /// Create the widgets for the Watch Face
     fn new() -> MynewtResult<Self>
