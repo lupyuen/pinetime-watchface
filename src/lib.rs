@@ -24,13 +24,12 @@
 #![feature(exclusive_range_pattern)]    //  Allow ranges like `0..128` in `match` statements
 
 //  Declare the libraries that contain macros
-extern crate mynewt;                    //  Declare the Mynewt library
 extern crate macros as mynewt_macros;   //  Declare the Mynewt Procedural Macros library
 
 use core::{
     ptr,
 };
-use mynewt::{
+use lvgl::mynewt::{
     fill_zero,
     kernel::os,
     result::*,
