@@ -1,7 +1,7 @@
 # Info about this package.
 [package]
 name          = "pinetime-watchface"
-version       = "1.0.3"
+version       = "1.0.4"
 authors       = ["Lee Lup Yuen <luppy@appkaki.com>"]
 edition       = "2018"
 description   = "Watch Face Framework for Mynewt on PineTime Smart Watch"
@@ -16,7 +16,7 @@ license       = "Apache-2.0"
 [dependencies]
 pinetime-macros = "1.0.3"  # Safe Wrapper Macros for Mynewt on PineTime Smart Watch: https://crates.io/crates/pinetime-macros
 # pinetime-macros = { path = "../pinetime-macros" }  # For development only
-pinetime-lvgl   = "1.0.3"  # LVGL Bindings for Mynewt on PineTime Smart Watch: https://crates.io/crates/pinetime-lvgl
+pinetime-lvgl   = "1.0.4"  # LVGL Bindings for Mynewt on PineTime Smart Watch: https://crates.io/crates/pinetime-lvgl
 # pinetime-lvgl   = { path = "../pinetime-lvgl" }  # For development only
 arrayvec        = { version = "0.5.1", default-features = false }
 cortex-m        = { version = "0.6.1", features = [ "inline-asm" ] }  # Arm Cortex-M utilities: https://crates.io/crates/cortex-m
