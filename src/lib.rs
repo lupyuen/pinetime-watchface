@@ -198,7 +198,7 @@ pub const fn new_string() -> String {
 }
 
 /// Convert a static String to null-terminated Strn
-pub fn to_strn(str: &'static String) -> Strn {
+pub fn to_strn(str: &String) -> Strn {
     Strn::new(str.as_bytes())
 }
 
