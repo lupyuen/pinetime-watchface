@@ -39,7 +39,10 @@ use lvgl::mynewt::{
     Strn,
 };
 use lvgl::{
-    core::obj,
+    core::{
+        disp,
+        obj
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -138,13 +141,11 @@ extern fn watch_face_callback(_ev: *mut os::os_event) {
 
 /// Get active screen from LVGL
 pub fn get_active_screen() -> lvgl::Ptr {
-    //  Get active screen from LVGL. We can't call lv_scr_act() because it's an inline function.
-    let screen = unsafe {  //  Unsafe because lv_disp_get_scr_act() is an LVGL C function
-        lv_disp_get_scr_act( 
-            obj::disp_get_default()
-                .expect("Failed to get display")
-        )
-    };
+    //  Get active screen from LVGL
+    let screen = disp::get_scr_act( 
+        disp::get_default()
+        .expect("Failed to get display")
+    ).expect("Failed to get active display");
     assert!(!screen.is_null(), "null screen");
     screen
 }
@@ -267,9 +268,6 @@ extern {
 
     /// Convert timeval to clocktime. From https://github.com/apache/mynewt-core/blob/master/time/datetime/include/datetime/datetime.h
     fn timeval_to_clocktime(tv: *const os::os_timeval, tz: *const os::os_timezone, ct: *mut clocktime) -> i32;
-
-    /// Get active screen for LVGL display. From LVGL.
-    fn lv_disp_get_scr_act(disp: *mut obj::lv_disp_t) -> lvgl::Ptr;
 }
 
 /// Mynewt Clock Time. From https://github.com/apache/mynewt-core/blob/master/time/datetime/include/datetime/datetime.h
