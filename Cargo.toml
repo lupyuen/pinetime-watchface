@@ -1,7 +1,7 @@
 # Info about this package.
 [package]
 name          = "pinetime-watchface"
-version       = "2.0.1"
+version       = "2.1.0"
 authors       = ["Lee Lup Yuen <luppy@appkaki.com>"]
 edition       = "2018"
 description   = "Watch Face Framework for Mynewt on PineTime Smart Watch"
