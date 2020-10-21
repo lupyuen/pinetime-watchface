@@ -55,7 +55,7 @@ pub trait WatchFace {
         where Self: core::marker::Sized;  //  Result type must have known size
 
     /// Update the widgets in the Watch Face with the current state
-    fn update(&self, state: &WatchFaceState) -> MynewtResult<()>;
+    fn update(&mut self, state: &WatchFaceState) -> MynewtResult<()>;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
