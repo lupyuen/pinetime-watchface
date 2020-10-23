@@ -74,10 +74,6 @@ pub fn start_watch_face(update_watch_face: UpdateWatchFace) -> MynewtResult<()> 
     //  Allow touch events
     obj::set_click(screen, true) ? ;
 
-    //  Render the watch face
-    let rc = unsafe { pinetime_lvgl_mynewt_render() };
-    assert!(rc == 0, "LVGL render fail");    
-
     //  Set a timer to update the watch face every minute
     unsafe {  //  Unsafe because os_callout_init is a Mynewt C function
         os::os_callout_init(
@@ -88,11 +84,11 @@ pub fn start_watch_face(update_watch_face: UpdateWatchFace) -> MynewtResult<()> 
         );    
     }
 
-    //  Trigger the watch face timer in 60 seconds
+    //  Trigger the watch face timer now to render the watch face for the first time
     let rc = unsafe {  //  Unsafe because os_callout_reset is a Mynewt C function
         os::os_callout_reset(
             &mut WATCH_FACE_CALLOUT,   //  Timer for the watch face
-            os::OS_TICKS_PER_SEC * 60  //  Trigger timer in 60 seconds
+            os::OS_TICKS_PER_SEC * 0   //  Trigger the timer now
         )
     };
     assert!(rc == 0, "Timer fail");
